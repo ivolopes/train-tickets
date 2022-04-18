@@ -1,5 +1,6 @@
 package com.trainticket.trainticket.core.services;
 
+import com.trainticket.trainticket.config.exceptions.InternalValidationException;
 import com.trainticket.trainticket.core.dto.SearchStationsDto;
 import com.trainticket.trainticket.core.entities.Station;
 import com.trainticket.trainticket.dataproviders.repository.StationRepository;
@@ -25,6 +26,11 @@ public class StationService {
    * @return return an object with the station's name and valid characters
    */
   public SearchStationsDto stationSearch(String name) {
+
+    if (name.trim().equals("")) {
+      throw new InternalValidationException("The station's name is blank");
+    }
+
     var stations = this.findByNameStartsWith(name);
 
     var validCharacters = stations.stream()

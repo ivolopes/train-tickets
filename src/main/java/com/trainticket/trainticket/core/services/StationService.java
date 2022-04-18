@@ -4,6 +4,7 @@ import com.trainticket.trainticket.core.dto.SearchStationsDto;
 import com.trainticket.trainticket.core.entities.Station;
 import com.trainticket.trainticket.dataproviders.repository.StationRepository;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -28,6 +29,7 @@ public class StationService {
 
     var validCharacters = stations.stream()
                             .map(s -> s.getValidCharacter(name))
+                            .filter(Objects::nonNull)
                             .collect(Collectors.toList());
 
     return SearchStationsDto.of(stations,

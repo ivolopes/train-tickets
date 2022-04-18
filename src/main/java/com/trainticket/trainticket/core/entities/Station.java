@@ -72,6 +72,10 @@ public class Station {
         throw new InternalValidationException("The searched name passed is not valid");
     }
 
+    if (name.length() == searchedName.length()) {
+      return null;
+    }
+
     return name.charAt(searchedName.length());
   }
 

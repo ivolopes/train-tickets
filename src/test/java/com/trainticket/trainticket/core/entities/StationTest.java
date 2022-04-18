@@ -1,6 +1,7 @@
 package com.trainticket.trainticket.core.entities;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import com.trainticket.trainticket.config.exceptions.InternalValidationException;
@@ -22,6 +23,14 @@ class StationTest {
     var searchedName = "sant";
 
     assertEquals('o', station.getValidCharacter(searchedName));
+  }
+
+  @Test
+  void getValidCharactersAllNameSucess() {
+    var station = Station.of("Santos");
+    var searchedName = "santos";
+
+    assertNull(station.getValidCharacter(searchedName));
   }
 
   @Test

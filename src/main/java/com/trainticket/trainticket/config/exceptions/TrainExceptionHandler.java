@@ -15,7 +15,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @ControllerAdvice
 public class TrainExceptionHandler extends ResponseEntityExceptionHandler {
 
-  private Logger log = LogManager.getLogger();
+  private final Logger log = LogManager.getLogger();
 
   @ExceptionHandler(InternalValidationException.class)
   @ResponseStatus(value = HttpStatus.BAD_REQUEST)

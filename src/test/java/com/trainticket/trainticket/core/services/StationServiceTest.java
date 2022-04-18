@@ -1,4 +1,4 @@
-package com.trainticket.trainticket.core.usecases;
+package com.trainticket.trainticket.core.services;
 
 import com.trainticket.trainticket.core.entities.Station;
 import com.trainticket.trainticket.dataproviders.repository.StationRepository;
@@ -14,13 +14,13 @@ import static org.mockito.Mockito.when;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @ExtendWith(MockitoExtension.class)
-public class StationUseCaseTest {
+public class StationServiceTest {
 
   @Mock
   private StationRepository repository;
 
   @InjectMocks
-  private StationUseCase stationUseCase;
+  private StationService stationService;
 
   @Test
   void stationSearchSuccess() {
@@ -32,7 +32,7 @@ public class StationUseCaseTest {
     when(repository.findByName(anyString()))
         .thenReturn(stations);
 
-    var dto = stationUseCase.stationSearch("Name");
+    var dto = stationService.stationSearch("Name");
 
     assertEquals(2, dto.getStations().size());
     assertEquals('1', dto.getValidCharacters().get(0));

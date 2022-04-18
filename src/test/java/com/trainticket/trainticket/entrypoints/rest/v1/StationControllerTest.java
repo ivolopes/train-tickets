@@ -8,7 +8,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import com.trainticket.trainticket.core.dto.SearchStationsDto;
 import com.trainticket.trainticket.core.entities.Station;
-import com.trainticket.trainticket.core.usecases.StationUseCase;
+import com.trainticket.trainticket.core.services.StationService;
 import java.util.Arrays;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +21,7 @@ import org.springframework.test.web.servlet.MockMvc;
 public class StationControllerTest {
 
   @MockBean
-  private StationUseCase stationUseCase;
+  private StationService stationService;
 
   @Autowired
   private MockMvc mockMvc;
@@ -35,7 +35,7 @@ public class StationControllerTest {
     var dto = SearchStationsDto.of(Arrays.asList(station1, station2),
         Arrays.asList('1', '2'));
 
-    when(stationUseCase.stationSearch(anyString()))
+    when(stationService.stationSearch(anyString()))
         .thenReturn(dto);
 
     this.mockMvc.perform(get("/api/v1/stations")

@@ -1,4 +1,4 @@
-package com.trainticket.trainticket.core.usecases;
+package com.trainticket.trainticket.core.services;
 
 import com.trainticket.trainticket.core.dto.SearchStationsDto;
 import com.trainticket.trainticket.core.entities.Station;
@@ -9,11 +9,11 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 /**
- * Station use cases
+ * Station service
  */
 @Service
 @RequiredArgsConstructor
-public class StationUseCase {
+public class StationService {
 
   private final StationRepository repository;
 
